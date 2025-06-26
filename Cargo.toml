@@ -1,0 +1,68 @@
+[package]
+name = "redis_replicator_rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT OR Apache-2.0"
+description = "A high-performance Redis replication library for Rust"
+repository = "https://github.com/yourusername/redis_replicator_rs"
+keywords = ["redis", "replication", "rdb", "aof", "database"]
+categories = ["database", "parsing"]
+readme = "README.md"
+
+[dependencies]
+# Core dependencies
+tokio = { version = "1.0", features = ["full"] }
+bytes = "1.5"
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+futures = "0.3"
+pin-project = "1.0"
+async-trait = "0.1"
+regex = "1.10"
+
+# Async I/O
+tokio-util = { version = "0.7", features = ["codec"] }
+
+# Compression
+flate2 = "1.0"
+lz4 = "1.24"
+
+# Networking
+tokio-native-tls = "0.3"
+native-tls = "0.2"
+
+# Utilities
+crc = "3.0"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4"] }
+once_cell = "1.19"
+parking_lot = "0.12"
+crossbeam = "0.8"
+bitflags = "2.4"
+
+# Metrics
+prometheus = "0.13"
+
+[dev-dependencies]
+tokio-test = "0.4"
+proptest = "1.4"
+criterion = { version = "0.5", features = ["html_reports"] }
+tempfile = "3.8"
+env_logger = "0.10"
+
+
+[[bench]]
+name = "parsing_benchmarks"
+harness = false
+
+[[example]]
+name = "parse_rdb"
+path = "examples/parse_rdb.rs"
+
+[[example]]
+name = "redis_replication"
+path = "examples/redis_replication.rs"
